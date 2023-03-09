@@ -38,9 +38,10 @@ if df is not None:
     #X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=RANDOM_STATE)
     
     lgb_model = lgb.Booster(model_file='output/lgb_model.txt')
-    y_pred = lgb_model.predict(X_test)
-    for i in range(len(y_pred)):
-        if y_pred[i] > 100: y_pred[i] =100
+    with st.spinner("Predicting... Please wait"):
+        y_pred = lgb_model.predict(X_test)
+        for i in range(len(y_pred)):
+            if y_pred[i] > 100: y_pred[i] =100
 
     st.subheader('Prediction Result')
     #st.write('The r2 of training data is:', metrics.r2_score(Y_train, lgb_model.predict(X_train)))
@@ -61,7 +62,7 @@ if df is not None:
     st.pyplot()
     st.write('The final decision tree of the model')
     
-    dpi = plt.rcParams['figure.dpi']
-    lgb.plot_tree(lgb_model,figsize=(50,50),orientation='vertical')
-
+    #dpi = plt.rcParams['figure.dpi']
+    #lgb.plot_tree(lgb_model,figsize=(50,50),orientation='vertical')
+    #st.pyplot()
     
