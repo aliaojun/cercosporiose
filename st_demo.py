@@ -7,6 +7,13 @@ import lightgbm as lgb
 import matplotlib.pyplot as plt
 from PIL import Image
 
+st.set_page_config(
+    page_title=CERCOCAP---ML Project,
+    page_icon=Image.open('photo/ACTA.png'),
+    layout="centered",
+    initial_sidebar_state="auto",
+)
+
 st.title('CERCOCAP - Prediction by LightGBM')
 st.write('This is a demo of the prediction of the CERCOCAP project.')
 
