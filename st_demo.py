@@ -48,8 +48,12 @@ if df is not None:
     st.write('The r2 of prediction is:', metrics.r2_score(Y_test, y_pred))
     st.write('The RMSE is:' , np.sqrt(metrics.mean_squared_error(Y_test, y_pred)))
     
-    st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.write('The Prediction table is :')
+    st.table(y_pred)
     
+    
+    st.write('Data Visualisation')
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     baseline = pd.read_csv('output/baseline.csv',sep = ';')
     plt.plot(sorted(X_test['jour']),sorted(Y_test),label='Real')
     plt.plot(sorted(X_test['jour']),sorted(y_pred),label='Prediction')
@@ -57,12 +61,16 @@ if df is not None:
     plt.legend()
     st.pyplot()
     
-    st.subheader('Model interpretation')
-    lgb.plot_importance(lgb_model,figsize=(20,15))
-    st.pyplot()
-    st.write('The final decision tree of the model')
+    st.download_button(label = 'Download the data as .txt' ,data = y_pred,filename='Prediction.txt')
     
-    dpi = plt.rcParams['figure.dpi']
-    graph = lgb.create_tree_digraph(lgb_model)
-    st.graphviz_chart(graph)
+    st.subheader('Model interpretation')
+    with st.expander('Feauture Importance'):
+        lgb.plot_importance(lgb_model,figsize=(20,15))
+        st.pyplot()
+        st.write('The final decision tree of the model')
+        
+    with st.expander('Tree Plot'):
+        dpi = plt.rcParams['figure.dpi']
+        graph = lgb.create_tree_digraph(lgb_model,orientation='vertical')
+        st.graphviz_chart(graph)
     
