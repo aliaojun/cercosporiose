@@ -66,7 +66,7 @@ if df is not None:
         # IMPORTANT: Cache the conversion to prevent computation on every rerun
         return df.to_csv(sep=";").encode('utf-8')
 
-    csv = convert_df(pd.Dataframe(y_pred))
+    csv = convert_df(pd.DataFrame(y_pred))
 
     st.download_button(
         label="Download data as CSV",
