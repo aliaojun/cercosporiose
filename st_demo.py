@@ -61,7 +61,19 @@ if df is not None:
     plt.legend()
     st.pyplot()
     
-    st.download_button('Download the data as .txt' ,y_pred)
+    @st.cache
+    def convert_df(df):
+        # IMPORTANT: Cache the conversion to prevent computation on every rerun
+        return df.to_csv(sep=";").encode('utf-8')
+
+    csv = convert_df(pd.Dataframe(y_pred))
+
+    st.download_button(
+        label="Download data as CSV",
+        data=csv,
+        file_name='Prediction.csv',
+        mime='text/csv',
+    )
     
     st.subheader('Model interpretation')
     with st.expander('Feauture Importance'):
