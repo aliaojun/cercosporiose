@@ -17,7 +17,7 @@ st.set_page_config(
 st.title('CERCOCAP - Prediction by LightGBM')
 with st.expander('Disclaimer'):
     
-    st.info('This is a demonstration of a machine learning model with cercocap.',icon = 'i')
+    st.info('This is a demonstration of a machine learning model with cercocap.')
     st.write('This model gives a percentage prediction of the cercoporiosed of this parcel based on the geographic information and weather information related to the input parcel. (The exact format of the input data can be viewed using the sample data)')
     st.write('The model also provides key factors influencing the epidemic and a decision tree model to help the researcher make a judgement.')
     
