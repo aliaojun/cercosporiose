@@ -62,7 +62,7 @@ if df is not None:
     st.pyplot()
     st.write('The final decision tree of the model')
     
-    #dpi = plt.rcParams['figure.dpi']
-    #lgb.plot_tree(lgb_model,figsize=(50,50),orientation='vertical')
-    #st.pyplot()
+    dpi = plt.rcParams['figure.dpi']
+    graph = lgb.create_tree_digraph(lgb_model)
+    st.graphviz_chart(graph)
     
