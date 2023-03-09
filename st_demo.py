@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 st.set_page_config(
-    page_title=CERCOCAP---ML Project,
+    page_title='CERCOCAP---ML Project',
     page_icon=Image.open('photo/ACTA.png'),
     layout="centered",
     initial_sidebar_state="auto",
