@@ -5,11 +5,15 @@ from sklearn import metrics
 import numpy as np
 import lightgbm as lgb
 import matplotlib.pyplot as plt
-from PIL import image
+from PIL import Image
 
 st.title('CERCOCAP - Prediction by LightGBM')
 st.write('This is a demo of the prediction of the CERCOCAP project.')
 
+acta = Image.open('photo/ACTA.jfif')
+itb = Image.open('photo/ITB.jfif')
+st.sidebar.image(acta)
+st.sidebar.image(itb)
 RANDOM_STATE = st.sidebar.number_input("Insert a RANDOM STATE Number", 0)
 
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
