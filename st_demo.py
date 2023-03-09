@@ -10,7 +10,7 @@ from PIL import Image
 st.title('CERCOCAP - Prediction by LightGBM')
 st.write('This is a demo of the prediction of the CERCOCAP project.')
 
-acta = Image.open('photo/ACTA.jfif')
+acta = Image.open('photo/ACTA.png')
 itb = Image.open('photo/ITB.jfif')
 st.sidebar.image(acta)
 st.sidebar.image(itb)
