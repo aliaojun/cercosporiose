@@ -9,7 +9,7 @@ from PIL import Image
 
 st.set_page_config(
     page_title='CERCOCAP---ML Project',
-    page_icon=Image.open('photo/ACTA.png'),
+    page_icon=Image.open('photo/icon.jpg'),
     layout="centered",
     initial_sidebar_state="auto",
 )
