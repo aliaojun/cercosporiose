@@ -5,6 +5,7 @@ from sklearn import metrics
 import numpy as np
 import lightgbm as lgb
 import matplotlib.pyplot as plt
+from PIL import image
 
 st.title('CERCOCAP - Prediction by LightGBM')
 st.write('This is a demo of the prediction of the CERCOCAP project.')
@@ -83,6 +84,6 @@ if df is not None:
         
     with st.expander('Tree Plot'):
         dpi = plt.rcParams['figure.dpi']
-        graph = lgb.create_tree_digraph(lgb_model,orientation='vertical')
+        graph = lgb.create_tree_digraph(lgb_model)
         st.graphviz_chart(graph)
     
