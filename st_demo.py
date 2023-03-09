@@ -5,7 +5,6 @@ from sklearn import metrics
 import numpy as np
 import lightgbm as lgb
 import matplotlib.pyplot as plt
-import graphviz
 
 st.title('CERCOCAP - Prediction by LightGBM')
 st.write('This is a demo of the prediction of the CERCOCAP project.')
@@ -64,6 +63,5 @@ if df is not None:
     
     dpi = plt.rcParams['figure.dpi']
     lgb.plot_tree(lgb_model,figsize=(50,50),orientation='vertical')
-    st.pyplot()
 
     
