@@ -11,7 +11,7 @@ st.title('CERCOCAP - Prediction by LightGBM')
 st.write('This is a demo of the prediction of the CERCOCAP project.')
 
 acta = Image.open('photo/ACTA.png')
-itb = Image.open('photo/ITB.jfif',use_column_width='True')
+itb = Image.open('photo/ITB.jfif')
 st.sidebar.image(acta)
 st.sidebar.image(itb)
 RANDOM_STATE = st.sidebar.number_input("Insert a RANDOM STATE Number", 0)
