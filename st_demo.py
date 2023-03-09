@@ -61,7 +61,7 @@ if df is not None:
     plt.legend()
     st.pyplot()
     
-    st.download_button(label = 'Download the data as .txt' ,y_pred)
+    st.download_button('Download the data as .txt' ,y_pred)
     
     st.subheader('Model interpretation')
     with st.expander('Feauture Importance'):
