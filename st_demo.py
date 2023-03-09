@@ -49,7 +49,7 @@ if df is not None:
     st.write('The RMSE is:' , np.sqrt(metrics.mean_squared_error(Y_test, y_pred)))
     
     st.write('The Prediction table is :')
-    st.table(y_pred)
+    st.table(y_pred[1:5])
     
     
     st.write('Data Visualisation')
@@ -61,7 +61,7 @@ if df is not None:
     plt.legend()
     st.pyplot()
     
-    st.download_button(label = 'Download the data as .txt' ,data = y_pred,filename='Prediction.txt')
+    st.download_button(label = 'Download the data as .txt' ,data = y_pred, file_name='Prediction.txt')
     
     st.subheader('Model interpretation')
     with st.expander('Feauture Importance'):
