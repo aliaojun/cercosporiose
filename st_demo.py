@@ -35,7 +35,7 @@ if uploaded_file is not None:
     df = pd.read_csv(uploaded_file,sep=";")
 elif st.button('Load example data'):
     df = pd.read_csv('output/data_ajout_nb_traitement.csv',sep = ';')
-    #df = df.sample(frac=0.01, random_state=RANDOM_STATE).reset_index(drop=True)
+    df = df.sample(frac=0.01, random_state=RANDOM_STATE).reset_index(drop=True)
     
 if df is not None:
     st.write('Here is the raw data')
