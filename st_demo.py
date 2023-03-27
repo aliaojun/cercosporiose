@@ -34,14 +34,14 @@ df = None
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file,sep=";")
 elif st.button('Load example data'):
-    df = pd.read_csv('output/df_zipped.gz',sep = ';',compression='gzip')
-    df = df.sample(frac=0.01, random_state=RANDOM_STATE).reset_index(drop=True)
+    df = pd.read_csv('output/df_ajout_nb_traitement.csv',sep = ';')
+    #df = df.sample(frac=0.01, random_state=RANDOM_STATE).reset_index(drop=True)
     
 if df is not None:
     st.write('Here is the raw data')
     st.dataframe(df)
     df_lgb = df[["jour","valeur","zone","zone_a_risque","T_Q","HU_Q","SSI_Q","Q_Q",
-                "coef_variete",
+                "coef_variete","nb_traitement",
                 "T_MOY","HU_MOY","SSI_MOY","Q_MOY"]]
     st.subheader('Data')
 
@@ -49,7 +49,7 @@ if df is not None:
     st.table(df_lgb.head(3))
     
     Y_test = df_lgb["valeur"]
-    X_test = pd.get_dummies(df_lgb[["jour","coef_variete","zone","zone_a_risque",
+    X_test = pd.get_dummies(df_lgb[["jour","coef_variete","zone","zone_a_risque","nb_traitement",
                             "T_Q","HU_Q","SSI_Q","Q_Q",
                             "T_MOY","HU_MOY","SSI_MOY","Q_MOY"]])
     #X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=RANDOM_STATE)
@@ -103,4 +103,20 @@ if df is not None:
         graph = lgb.create_tree_digraph(lgb_model)
         st.graphviz_chart(graph)
     
+    @st.cache
+    def download_tree(lgb_model):
+        # IMPORTANT: Cache the conversion to prevent computation on every rerun
+        res = lgb.create_tree_digraph(lgb_model)
+        #save the graph as a png file
+        
+        return res.render('output/tree')
+
+    tree_pdf = download_tree(lgb_model)
+
+    st.download_button(
+        label="Download the final decision tree plot",
+        data=csv,
+        file_name='tree.pdf',
+        mime='pdf',
+    )
     
