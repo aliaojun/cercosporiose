@@ -103,20 +103,3 @@ if df is not None:
         graph = lgb.create_tree_digraph(lgb_model)
         st.graphviz_chart(graph)
     
-    @st.cache
-    def download_tree(lgb_model):
-        # IMPORTANT: Cache the conversion to prevent computation on every rerun
-        res = lgb.create_tree_digraph(lgb_model)
-        #save the graph as a png file
-        
-        return res.render('output/tree')
-
-    tree_pdf = download_tree(lgb_model)
-
-    st.download_button(
-        label="Download the final decision tree plot",
-        data=csv,
-        file_name='tree.pdf',
-        mime='pdf',
-    )
-    
