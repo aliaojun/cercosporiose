@@ -50,7 +50,6 @@ if df is not None:
     
     Y_test = df_lgb["valeur"]
     X_test = pd.get_dummies(df_lgb[["jour","coef_variete","zone","zone_a_risque","nb_traitement",
-                            "T_Q","HU_Q","SSI_Q","Q_Q",
                             "T_MOY","HU_MOY","SSI_MOY","Q_MOY"]])
     #X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=RANDOM_STATE)
     
