@@ -8,4 +8,4 @@ One of the challenges of machine learning is to understand how a model makes pre
 
 A force plot consists of a base value, which is the average prediction of the model, and an output value, which is the actual prediction for a given instance or group.
 
-<output/shap_plot.html>
+<img href="output/shap_plot.html">Force plot</img>
