@@ -1,4 +1,4 @@
-# Cercoporiose
+# Cercosporiose
 
 Streamlit is a Python framework for machine learning, data visualisation and building a beautiful online app in just a few lines of code.
 
